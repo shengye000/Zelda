@@ -53,7 +53,7 @@ public class ZeldaMain {
 				answerList.addAll(acceptedQuests);
 				answer.setListAnswer(answerList);
 			}
-			System.out.println(totalRupees + " " + acceptedQuests);
+			//System.out.println(totalRupees + " " + acceptedQuests);
 		}
 		else {
 			//from where in the questList to start
@@ -67,7 +67,7 @@ public class ZeldaMain {
 			//recursion to start accepting quests
 			for(int j = index; j < questList.size(); j++) {
 				QuestBoard quest = questList.get(j);
-				if(!acceptedQuests.contains(questList.get(j).getQuest())) {
+				if(!acceptedQuests.contains(questList.get(j).getQuest()) && quest.getStartDate() + quest.getDuration() <= 31) {
 					acceptedQuests.add(quest.getQuest());
 					highestRupee = answer.getRupeeAnswer();
 					getBestQuest(questList, quest.getStartDate() + quest.getDuration(), totalRupees + quest.getReward(), acceptedQuests, highestRupee, answer);
